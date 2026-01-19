@@ -28,11 +28,12 @@
           pkgs.openssl
         ];
         
+        # Note: darwin.apple_sdk has been removed in nixpkgs; use apple-sdk instead
+        # The new SDK propagates frameworks automatically - no need to list them individually
+        # See: https://nixos.org/manual/nixpkgs/stable/#sec-darwin-legacy-frameworks
         darwinInputs = with pkgs; [
           libiconv
-          darwin.apple_sdk.frameworks.Security
-          darwin.apple_sdk.frameworks.SystemConfiguration
-          darwin.apple_sdk.frameworks.CoreServices
+          apple-sdk
         ];
         
         buildInputs = commonInputs
